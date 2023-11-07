@@ -70,6 +70,9 @@ public class GameManager : MonoBehaviour
             case DiagnoseType.Healthy:
                 return "Healthy";
                 break;
+            case DiagnoseType.RedBeetJuice:
+                return "Red Beet Juice";
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(diagnoseType), diagnoseType, null);
         }
@@ -79,6 +82,17 @@ public class GameManager : MonoBehaviour
     {
         playerScore += pointsPerProbe;
         UpdateScoreDisplay();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            foreach (UrinProbe urinProbe in allProbes)
+            {
+                urinProbe.SetupProbe();
+            }
+        }
     }
 
     public void DecreaseScore()

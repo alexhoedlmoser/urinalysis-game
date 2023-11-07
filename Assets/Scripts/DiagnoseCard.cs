@@ -15,7 +15,8 @@ public enum DiagnoseType
     Infection,
     Blood,
     VitaminOverdose,
-    Healthy
+    Healthy,
+    RedBeetJuice
 }
 
 public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler

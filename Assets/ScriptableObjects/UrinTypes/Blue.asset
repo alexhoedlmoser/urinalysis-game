@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   diagnoseTypes: 02000000
-  urinColor: {r: 0.5801887, g: 0.9097601, b: 1, a: 1}
+  urinColor: {r: 0.32961905, g: 0.8867924, b: 0.7957699, a: 1}
