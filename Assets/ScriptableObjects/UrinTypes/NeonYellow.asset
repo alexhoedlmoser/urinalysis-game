@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b86f7e8dedff644390159c9247bb66a, type: 3}
-  m_Name: Green
+  m_Name: NeonYellow
   m_EditorClassIdentifier: 
-  diagnoseTypes: 02000000
-  urinColor: {r: 0.6650944, g: 1, b: 0.69619566, a: 1}
+  diagnoseTypes: 04000000
+  urinColor: {r: 0.96320754, g: 1, b: 0.3915094, a: 1}

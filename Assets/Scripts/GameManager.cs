@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
 
     #endregion
     
-    public DiagnoseCard currentMouseDiagnose;
-    public UrinProbe currentMouseProbe;
+    [HideInInspector] public DiagnoseCard currentMouseDiagnose;
+    [HideInInspector] public UrinProbe currentMouseProbe;
     public UrinType[] urinTypes;
+    public UrinProbe[] allProbes;
 
     public int playerScore;
     public int pointsPerProbe;
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
                 return "Blood";
                 break;
             case DiagnoseType.VitaminOverdose:
-                return "Vitamin Overdose";
+                return "Vitamin B2 Overdose";
                 break;
             case DiagnoseType.Healthy:
                 return "Healthy";

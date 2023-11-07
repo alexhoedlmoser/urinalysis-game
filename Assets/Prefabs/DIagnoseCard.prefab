@@ -92,12 +92,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 24
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 30
+  m_fontSizeMin: 16
+  m_fontSizeMax: 24
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -227,7 +227,9 @@ MonoBehaviour:
   diagnoseType: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0.5707547, g: 0.85587204, b: 1, a: 1}
+  clickColor: {r: 0.14231041, g: 0.53437257, b: 0.735849, a: 1}
   draggingPrefab: {fileID: 5792142243293875969, guid: ea5fe9077da527746baa5fe90564b446, type: 3}
+  draggingRotation: {x: 0, y: 0, z: 8}
   cardLabel: {fileID: 4966738683027802538}
 --- !u!1 &7444669518464183755
 GameObject:

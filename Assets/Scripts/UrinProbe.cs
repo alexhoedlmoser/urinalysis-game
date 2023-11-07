@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public UrinType urinType;
+    public bool isActive;
 
     [SerializeField] private Image fillImage;
 
@@ -15,14 +16,20 @@ public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // Start is called before the first frame update
     void Start()
     {
-        urinType = GameManager.Instance.GetRandomType();
-        fillImage.color = urinType.urinColor;
+        SetupProbe();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetupProbe()
+    {
+        highlightImage.gameObject.SetActive(false);
+        urinType = GameManager.Instance.GetRandomType();
+        fillImage.color = urinType.urinColor;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
