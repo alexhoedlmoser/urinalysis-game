@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,11 +12,15 @@ public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public bool isActive;
 
     [SerializeField] private Image fillImage;
-
     [SerializeField] private Image highlightImage;
+
+    [SerializeField] private CanvasGroup _canvasGroup;
+    private Sequence _currentBlinkSequence;
+    
     // Start is called before the first frame update
     void Start()
     {
+        _canvasGroup = GetComponent<CanvasGroup>();
         SetupProbe();
     }
 
@@ -36,12 +41,27 @@ public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         highlightImage.gameObject.SetActive(true);
         GameManager.Instance.currentMouseProbe = this;
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         highlightImage.gameObject.SetActive(false);
         GameManager.Instance.currentMouseProbe = null;
+    }
+
+    public void StartProbeBlink()
+    {
+        if (_currentBlinkSequence.IsActive()) return;
+        _currentBlinkSequence = BlinkOut().OnComplete(() => gameObject.SetActive(false));
+    }
+
+    private Sequence BlinkOut()
+    {
+        return DOTween.Sequence()
+            .Append(_canvasGroup.DOFade(0f, 2f).SetEase(Ease.Flash))
+            .Append(_canvasGroup.DOFade(1f, 1f).SetEase(Ease.Flash))
+            .Append(_canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.Flash))
+            .Append(_canvasGroup.DOFade(1f, 0.25f).SetEase(Ease.Flash))
+            .Append(_canvasGroup.DOFade(0f, 0.25f).SetEase(Ease.Flash));
     }
 }

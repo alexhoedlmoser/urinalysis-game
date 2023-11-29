@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 7751138865915515294}
   - component: {fileID: 1100282062389871517}
   - component: {fileID: 3318369049355910693}
+  - component: {fileID: 6717527252508990403}
   m_Layer: 5
   m_Name: UrinProbe
   m_TagString: Untagged
@@ -283,6 +284,7 @@ MonoBehaviour:
   isActive: 0
   fillImage: {fileID: 3773713541133344411}
   highlightImage: {fileID: 2875443652701660168}
+  _canvasGroup: {fileID: 0}
 --- !u!222 &1100282062389871517
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -321,6 +323,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6717527252508990403
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6914354287460345818}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7159724800785502959
 GameObject:
   m_ObjectHideFlags: 0

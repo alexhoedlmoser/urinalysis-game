@@ -92,7 +92,7 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 GameManager.Instance.DecreaseScore();
             }
             
-            GameManager.Instance.currentMouseProbe.gameObject.SetActive(false);
+            GameManager.Instance.currentMouseProbe.StartProbeBlink();
             GameManager.Instance.currentMouseProbe = null;
             CheckProbes();
         }
