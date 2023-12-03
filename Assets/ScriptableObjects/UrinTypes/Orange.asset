@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Orange
   m_EditorClassIdentifier: 
   diagnoseTypes: 0000000007000000
+  diagnoseExplanations:
+  - {fileID: 11400000, guid: 2d5fa61156f8c8043b1e6d0df3018d4a, type: 2}
+  - {fileID: 11400000, guid: f3eb14d4bb4a0fa48b7a7c8c09347919, type: 2}
   urinColor: {r: 0.8867924, g: 0.62021494, b: 0.4141153, a: 1}

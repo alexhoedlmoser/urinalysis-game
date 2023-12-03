@@ -102,6 +102,9 @@ public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         _currentlyBlinking = true;
         _canvasGroup.alpha = 1f; 
+        
+        yield return new WaitUntil( () => GameManager.Instance.gameState == GameState.InProgress);
+        
         yield return new WaitForSeconds(1f);
         _canvasGroup.alpha = 0f;
         yield return new WaitForSeconds(_blinkInterval);

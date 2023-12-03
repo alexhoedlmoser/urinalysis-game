@@ -32,6 +32,8 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private Image cardImage;
 
     public DiagnoseType diagnoseType;
+    public bool explainDiagnose;
+
     [SerializeField] private Color normalColor;
     [SerializeField] private Color highlightColor;
     [SerializeField] private Color clickColor;
@@ -103,7 +105,16 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                     GameManager.Instance.IncreaseScore();
                     diagnoseCardOnProbe.SetBackgroundColor(true);
 
+                    if (explainDiagnose)
+                    {
+                        int index = Array.IndexOf(urinType.diagnoseTypes, diagnoseType);
 
+                        if (urinType.diagnoseExplanations.Length > index)
+                        {
+                            GameManager.CurrentProfessor.dialog.StartDialog(urinType.diagnoseExplanations[index]);
+                            explainDiagnose = false;
+                        }
+                    }
                 }
                 else
                 {

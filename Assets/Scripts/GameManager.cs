@@ -5,8 +5,16 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+
+
+public enum GameState
+{
+    InProgress,
+    InDialog
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -38,12 +46,17 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UrinProbe currentMouseProbe;
     public UrinType[] urinTypes;
     public UrinProbe[] allProbes;
+    public GameState gameState;
 
     public int playerScore;
     public int pointsPerProbe;
     [SerializeField] private TMP_Text pointDisplay;
 
-   
+    public static Professor CurrentProfessor => _currentProfessor ? _currentProfessor : _currentProfessor = FindObjectOfType<Professor>();
+    private static Professor _currentProfessor;
+    
+    public static PlayerInputHandler CurrentInputHandler => _currentInputHandler ? _currentInputHandler : _currentInputHandler = FindObjectOfType<PlayerInputHandler>();
+    private static PlayerInputHandler _currentInputHandler;
 
     public UrinType GetRandomType()
     {

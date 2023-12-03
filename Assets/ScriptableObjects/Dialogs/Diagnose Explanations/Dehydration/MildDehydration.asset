@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b86f7e8dedff644390159c9247bb66a, type: 3}
-  m_Name: DarkYellow
+  m_Script: {fileID: 11500000, guid: 6f6f2b8d4d96f4942a9031bb9eebe8fe, type: 3}
+  m_Name: MildDehydration
   m_EditorClassIdentifier: 
-  diagnoseTypes: 00000000
-  diagnoseExplanations:
-  - {fileID: 11400000, guid: 2d5fa61156f8c8043b1e6d0df3018d4a, type: 2}
-  urinColor: {r: 0.68235296, g: 0.5137255, b: 0.3254902, a: 1}
+  dialogLines:
+  - {fileID: 11400000, guid: 3d5790fdc71d5f6438c80ed08196a3aa, type: 2}
+  onlyOnce: 0
+  isFinished: 0
+  invokeEvent: 0

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Brown
   m_EditorClassIdentifier: 
   diagnoseTypes: 070000000b00000009000000
-  urinColor: {r: 0.50980395, g: 0.3529412, b: 0.2784314, a: 1}
+  diagnoseExplanations:
+  - {fileID: 11400000, guid: f3eb14d4bb4a0fa48b7a7c8c09347919, type: 2}
+  urinColor: {r: 0.5754717, g: 0.41129643, b: 0.31759524, a: 1}
