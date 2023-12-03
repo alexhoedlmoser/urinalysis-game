@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public int pointsPerProbe;
     [SerializeField] private TMP_Text pointDisplay;
 
+   
+
     public UrinType GetRandomType()
     {
         return urinTypes[Random.Range(0, urinTypes.Length)];
@@ -50,32 +52,24 @@ public class GameManager : MonoBehaviour
 
     public string GetDiagnoseLabel(DiagnoseType diagnoseType)
     {
-        switch (diagnoseType)
+        return diagnoseType switch
         {
-            case DiagnoseType.Dehydrated:
-                return "Dehydrated";
-                break;
-            case DiagnoseType.Overhydrated:
-                return "Overhydrated";
-                break;
-            case DiagnoseType.Infection:
-                return "Infection";
-                break;
-            case DiagnoseType.Blood:
-                return "Blood";
-                break;
-            case DiagnoseType.VitaminOverdose:
-                return "Vitamin B2 Overdose";
-                break;
-            case DiagnoseType.Healthy:
-                return "Healthy";
-                break;
-            case DiagnoseType.RedBeetJuice:
-                return "Red Beet Juice";
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(diagnoseType), diagnoseType, null);
-        }
+            DiagnoseType.Dehydrated => "Dehydration",
+            DiagnoseType.Overhydrated => "Overhydration",
+            DiagnoseType.Infection => "Urinary Tract Infection",
+            DiagnoseType.Hematuria => "Hematuria",
+            DiagnoseType.VitaminOverdose => "Vitamin B2",
+            DiagnoseType.Healthy => "Healthy",
+            DiagnoseType.RedBeetJuice => "Red Beets",
+            DiagnoseType.LiverIssue => "Liver Issue",
+            DiagnoseType.MethyleneDye => "Methyline Blue Dye",
+            DiagnoseType.Rhubarb => "Rhubarb, Fava Beans",
+            DiagnoseType.Rhabdomyolosis => "Rhabdomyolosis",
+            DiagnoseType.PhysicalActivity => "Intense Physical Activity",
+            DiagnoseType.KidneyDisease => "Kidney Disease",
+            DiagnoseType.Diabetes => "Diabetes",
+            _ => throw new ArgumentOutOfRangeException(nameof(diagnoseType), diagnoseType, null)
+        };
     }
 
     public void IncreaseScore()

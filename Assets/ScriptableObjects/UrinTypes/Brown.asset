@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b86f7e8dedff644390159c9247bb66a, type: 3}
-  m_Name: Blue
+  m_Name: Brown
   m_EditorClassIdentifier: 
-  diagnoseTypes: 0200000008000000
-  urinColor: {r: 0.63529414, g: 0.77647066, b: 0.79215693, a: 1}
+  diagnoseTypes: 070000000b00000009000000
+  urinColor: {r: 0.50980395, g: 0.3529412, b: 0.2784314, a: 1}

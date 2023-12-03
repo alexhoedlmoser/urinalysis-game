@@ -7,4 +7,8 @@ public class DiagnoseCardDrag : MonoBehaviour
 {
     public TMP_Text label;
     
+    public void SetLabel(string text)
+    {
+        label.text = text;
+    }
 }

@@ -13,10 +13,18 @@ public enum DiagnoseType
     Dehydrated,
     Overhydrated,
     Infection,
-    Blood,
+    Hematuria,
     VitaminOverdose,
     Healthy,
-    RedBeetJuice
+    RedBeetJuice,
+    LiverIssue,
+    MethyleneDye,
+    Rhubarb,
+    Rhabdomyolosis,
+    PhysicalActivity,
+    KidneyDisease,
+    Diabetes
+    
 }
 
 public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
@@ -28,6 +36,7 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private Color highlightColor;
     [SerializeField] private Color clickColor;
     [SerializeField] private GameObject draggingPrefab;
+    [SerializeField] private GameObject onProbePrefab;
     [SerializeField] private Vector3 draggingRotation;
     [SerializeField] private TMP_Text cardLabel;
 
@@ -65,13 +74,13 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnDrag(PointerEventData eventData)
     {
-        currentMouseObject.transform.position = Input.mousePosition;
+        //
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         currentMouseObject = Instantiate(draggingPrefab, Input.mousePosition, Quaternion.Euler(draggingRotation), draggingParent);
-        currentMouseObject.GetComponent<DiagnoseCardDrag>().label.text = cardLabel.text;
+        currentMouseObject.GetComponent<DiagnoseCardDrag>().SetLabel(cardLabel.text);
         GameManager.Instance.currentMouseDiagnose = this;
     }
 
@@ -79,22 +88,35 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (GameManager.Instance.currentMouseProbe)
         {
-            UrinType urinType = GameManager.Instance.currentMouseProbe.urinType;
-            if (urinType.diagnoseTypes.Contains(diagnoseType))
+
+            UrinProbe urinProbe = GameManager.Instance.currentMouseProbe;
+            UrinType urinType = urinProbe.urinType;
+
+            if (urinProbe.CheckTypeHistory(diagnoseType))
             {
-                print("correct");
-                GameManager.Instance.IncreaseScore();
+                DiagnoseCardOnProbe diagnoseCardOnProbe = Instantiate(onProbePrefab, Vector3.zero, Quaternion.identity, urinProbe.cardLayout).GetComponent<DiagnoseCardOnProbe>();
+                diagnoseCardOnProbe.SetLabel(cardLabel.text);
                 
-            }
-            else
-            {
-                print("uncorrect");
-                GameManager.Instance.DecreaseScore();
+                if (urinType.diagnoseTypes.Contains(diagnoseType))
+                {
+                    print("correct");
+                    GameManager.Instance.IncreaseScore();
+                    diagnoseCardOnProbe.SetBackgroundColor(true);
+
+
+                }
+                else
+                {
+                    print("uncorrect");
+                    GameManager.Instance.DecreaseScore();
+                    diagnoseCardOnProbe.SetBackgroundColor(false);
+                }
+                
+                urinProbe.StartProbeBlink();
             }
             
-            GameManager.Instance.currentMouseProbe.StartProbeBlink();
-            GameManager.Instance.currentMouseProbe = null;
-            CheckProbes();
+            //GameManager.Instance.currentMouseProbe = null;
+            //CheckProbes();
         }
         
         Destroy(currentMouseObject);

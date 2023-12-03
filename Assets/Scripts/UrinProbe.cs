@@ -9,14 +9,21 @@ using DG.Tweening;
 public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public UrinType urinType;
+    public Transform cardLayout;
     public bool isActive;
 
     [SerializeField] private Image fillImage;
     [SerializeField] private Image highlightImage;
 
     [SerializeField] private CanvasGroup _canvasGroup;
-    private Sequence _currentBlinkSequence;
+    [SerializeField] private float _blinkInterval = 0.1f;
+    [SerializeField] private float _respawnCooldown = 3f;
     
+    private Coroutine _currentBlinkCoroutine;
+    private Coroutine _currentRespawnCoroutine;
+    private bool _currentlyBlinking;
+    public List<DiagnoseType> typeHistory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +34,37 @@ public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void SetupProbe()
     {
         highlightImage.gameObject.SetActive(false);
+        AssignUrineType();
+        ToggleProbe(true);
+    }
+
+    private void AssignUrineType()
+    {
         urinType = GameManager.Instance.GetRandomType();
         fillImage.color = urinType.urinColor;
+        ResetTypeHistory();
     }
+
+    public void ToggleProbe(bool toggle)
+    {
+        _canvasGroup.interactable = toggle;
+        _canvasGroup.alpha = toggle ? 1f : 0f;
+        _canvasGroup.blocksRaycasts = toggle;
+    }
+
+    public void ResetCardsOnProbe()
+    {
+        foreach (Transform child in cardLayout)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -51,17 +80,91 @@ public class UrinProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void StartProbeBlink()
     {
-        if (_currentBlinkSequence.IsActive()) return;
-        _currentBlinkSequence = BlinkOut().OnComplete(() => gameObject.SetActive(false));
+        if (_currentlyBlinking)
+        {
+            StopCoroutine(_currentBlinkCoroutine);
+        }
+
+        if (_currentRespawnCoroutine != null)
+        {
+            StopCoroutine(_currentRespawnCoroutine);
+        }
+        
+        _currentBlinkCoroutine = StartCoroutine(BlinkOut());
     }
 
-    private Sequence BlinkOut()
+    private void StartRespawn()
     {
-        return DOTween.Sequence()
-            .Append(_canvasGroup.DOFade(0f, 2f).SetEase(Ease.Flash))
-            .Append(_canvasGroup.DOFade(1f, 1f).SetEase(Ease.Flash))
-            .Append(_canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.Flash))
-            .Append(_canvasGroup.DOFade(1f, 0.25f).SetEase(Ease.Flash))
-            .Append(_canvasGroup.DOFade(0f, 0.25f).SetEase(Ease.Flash));
+        _currentRespawnCoroutine = StartCoroutine(RespawnProbe());
+    }
+
+    private IEnumerator BlinkOut()
+    {
+        _currentlyBlinking = true;
+        _canvasGroup.alpha = 1f; 
+        yield return new WaitForSeconds(1f);
+        _canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(1f);
+        _canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(0.5f);
+        _canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(0.25f);
+        _canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(0.25f);
+        
+        ToggleProbe(false);
+        ResetCardsOnProbe();
+        
+        _currentlyBlinking = false;
+        
+        StartRespawn();
+    }
+
+    private IEnumerator RespawnProbe()
+    {
+        yield return new WaitForSeconds(_respawnCooldown);
+        
+        AssignUrineType();
+        ToggleProbe(true);
+        
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 1f;
+        yield return new WaitForSeconds(_blinkInterval);
+        _canvasGroup.alpha = 0f;                         
+        yield return new WaitForSeconds(_blinkInterval); 
+        _canvasGroup.alpha = 1f;
+    }
+
+    public bool CheckTypeHistory(DiagnoseType diagnoseType)
+    {
+        if (typeHistory.Contains(diagnoseType))
+        {
+            return false;
+        }
+        else
+        {
+            typeHistory.Add(diagnoseType);
+            return true;
+        }
+    }
+
+    private void ResetTypeHistory()
+    {
+        typeHistory.Clear();
     }
 }
