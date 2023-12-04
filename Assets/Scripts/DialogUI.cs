@@ -45,7 +45,7 @@ public class DialogUI : MonoBehaviour
     
     public void DisplayName(string name)
     {
-        nameText.text = name.ToUpper();
+        nameText.text = name;
     }
 
     private IEnumerator TextVisible()
@@ -90,7 +90,7 @@ public class DialogUI : MonoBehaviour
     {
         return DOTween.Sequence()
             .Append(_rectTransform.DOSizeDelta(new Vector2(_standardSizeX, _endSizeY), _fadeInDuration)
-                .SetEase(Ease.OutQuart))
+                .SetEase(Ease.OutCubic))
             .Join(dialogText.DOFade(1, _fadeInDuration))
             .Join(nameText.DOFade(1, _fadeInDuration))
             .Join(_background.DOFade(_backgroundAlpha, _fadeInDuration));
@@ -106,7 +106,7 @@ public class DialogUI : MonoBehaviour
     {
         return DOTween.Sequence()
             .Append(_rectTransform.DOSizeDelta(new Vector2(_standardSizeX, 0), _fadeInDuration)
-                .SetEase(Ease.InQuart))
+                .SetEase(Ease.InCubic))
             .Join(dialogText.DOFade(0, _fadeInDuration))
             .Join(nameText.DOFade(0, _fadeInDuration))
             .Join(_background.DOFade(0, _fadeInDuration));

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogLines:
   - {fileID: 11400000, guid: 3d5790fdc71d5f6438c80ed08196a3aa, type: 2}
+  - {fileID: 11400000, guid: 2f45a0b1a389c004eb99115618bb58e7, type: 2}
+  - {fileID: 11400000, guid: 60d2b78259e59dd4b8a12ad69dab5275, type: 2}
   onlyOnce: 0
-  isFinished: 0
+  isFinished: 1
   invokeEvent: 0

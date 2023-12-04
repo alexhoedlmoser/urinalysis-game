@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MildDehydration_01
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  englishText: Dark yellow or light orange urine may indicate that a person is mildly
-    dehydrated. This typically means that they need to drink more water.
+  englishText: 'Ah yes. Dehydration. This one is actually very common since many
+    people tend to forget to drink enough throughout the day! Dehydration is usually
+    characterized by a darker colorization which can be in a variety of shades. From
+    a dark yellow, orange, dark orange or brownish. '
   germanText: 
-  duration: 5
+  duration: 20

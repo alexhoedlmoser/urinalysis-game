@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Rhabdomyolysis_01
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  englishText: Dark brown, dark red, or tea-colored urine may be a sign of rhabdomyolysis,
-    which is a serious condition that occurs from muscle tissue death.
+  englishText: If you experience this, you need medical attention immediately! Rhabdomyolysis
+    is a serious condition which involves the breakdown of muscle tissue. In more
+    extreme cases it can lead to permanent disability or even death!
   germanText: 
-  duration: 5
+  duration: 20

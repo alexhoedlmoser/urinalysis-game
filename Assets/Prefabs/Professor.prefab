@@ -67,9 +67,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 3246cc899b3f4a54594be154a9aba5e0, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -89,6 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04ffcdd8ff423044ac7b84242842621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialog: {fileID: 0}
+  _inDialogSprites:
+  - {fileID: 21300000, guid: 6d79f3b0dcd91c44cb9b5995f0624c1e, type: 3}
+  - {fileID: 21300000, guid: 35b6ce3f65d6c584dbd337fbebe25998, type: 3}
+  _idleSprite: {fileID: 21300000, guid: 3246cc899b3f4a54594be154a9aba5e0, type: 3}
+  _falseHintSprite: {fileID: 0}
+  _trueHintSprite: {fileID: 0}
 --- !u!114 &8616811152382268362
 MonoBehaviour:
   m_ObjectHideFlags: 0

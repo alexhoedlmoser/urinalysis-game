@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b86f7e8dedff644390159c9247bb66a, type: 3}
   m_Name: DarkBrown
   m_EditorClassIdentifier: 
-  diagnoseTypes: 0a00000007000000
-  diagnoseExplanations:
-  - {fileID: 11400000, guid: 5dba87a5396944343a668fc9e0a79702, type: 2}
-  - {fileID: 11400000, guid: f3eb14d4bb4a0fa48b7a7c8c09347919, type: 2}
+  diagnoseTypes: 0a000000070000000c000000
   urinColor: {r: 0.39607847, g: 0.29803923, b: 0.2392157, a: 1}

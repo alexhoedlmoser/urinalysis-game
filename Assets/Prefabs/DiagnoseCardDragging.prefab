@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: -50, y: -35}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: -50, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4344816311537519363
 CanvasRenderer:
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dehydrated
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 478d9221a8746fd4a986eba51a49dc04, type: 2}
-  m_sharedMaterial: {fileID: 2115863808649573743, guid: 478d9221a8746fd4a986eba51a49dc04, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a83546c0db2e5c74db8f8e2abac32bba, type: 2}
+  m_sharedMaterial: {fileID: 5992516103751389502, guid: a83546c0db2e5c74db8f8e2abac32bba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_fontSizeMin: 16
   m_fontSizeMax: 24
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 119320911561971278}
   - component: {fileID: 4516005264808318708}
   - component: {fileID: 262856786118523792}
+  - component: {fileID: 7976535827345768715}
   - component: {fileID: 7971721173669459511}
   - component: {fileID: -6107644809571658674}
   m_Layer: 5
@@ -204,8 +205,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 160b2cfc64c08794ea10a65babae8a80, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 5
 --- !u!114 &262856786118523792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +228,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: {fileID: 4966738683027802538}
+--- !u!114 &7976535827345768715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792142243293875969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!114 &7971721173669459511
 MonoBehaviour:
   m_ObjectHideFlags: 0

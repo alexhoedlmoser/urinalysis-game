@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: LiverProblem_01
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  englishText: Dark urine may be a sign of a problem with the liver. A liver problem
-    can cause the body to excrete high levels of bilirubin, which is a pigment present
-    in bile.
+  englishText: "Liver issues can be quite serious and should get medical attention
+    as fast as possible. Your Urine may be very dark which could be due to the liver
+    having a problem. The body starts to produce higher levels of \u201Cbilirubin\u201D
+    which is a prigment present in Bile and might discolor the urine. "
   germanText: 
-  duration: 5
+  duration: 20

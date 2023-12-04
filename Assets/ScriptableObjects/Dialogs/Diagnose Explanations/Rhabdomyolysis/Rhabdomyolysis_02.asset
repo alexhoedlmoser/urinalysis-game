@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Rhabdomyolysis_02
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  englishText: People with this condition need immediate medical treatment.
+  englishText: 'Symptoms include: A dark brown colorization of your urine, muscle
+    weakness, low urine output, fatigue, fevers, confusion among others. The cause
+    for Rhabdomyolysis is usually muscle injury so keep it mind.'
   germanText: 
-  duration: 3
+  duration: 20

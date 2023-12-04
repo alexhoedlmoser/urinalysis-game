@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1664785472541674556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8762434331748937204}
+  - component: {fileID: 3188618484765586438}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8762434331748937204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664785472541674556}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1093.2292, y: 717.5674, z: 1.8947349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3188618484765586438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664785472541674556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f506f42ba72ed4b97f33de56fb2c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMouseDiagnose: {fileID: 0}
+  currentMouseProbe: {fileID: 0}
+  urinTypes:
+  - {fileID: 11400000, guid: 8fd62137c6020e74198239f20b18a196, type: 2}
+  - {fileID: 11400000, guid: d4511e95306b35141b08db9be2cc7f27, type: 2}
+  - {fileID: 11400000, guid: bbcbfe911b5369a439fc996e08d14bcc, type: 2}
+  - {fileID: 11400000, guid: 9260ab1f4d9ae364bb3db99dce793b86, type: 2}
+  - {fileID: 11400000, guid: 86413dee39fffeb46b3291634c48fa44, type: 2}
+  - {fileID: 11400000, guid: dfcb00b41cd97484296dc4a56d9ebd2c, type: 2}
+  - {fileID: 11400000, guid: d7941021c96967341aaac6472f1b0f2c, type: 2}
+  - {fileID: 11400000, guid: c02d5e3dfac8b074b94f8bc90fa7a194, type: 2}
+  - {fileID: 11400000, guid: 03c1ee65fff816d4db739a5b66ff19be, type: 2}
+  - {fileID: 11400000, guid: db35e3f97657b3c46a693b10324a116e, type: 2}
+  - {fileID: 11400000, guid: db35e3f97657b3c46a693b10324a116e, type: 2}
+  - {fileID: 11400000, guid: db35e3f97657b3c46a693b10324a116e, type: 2}
+  - {fileID: 11400000, guid: db35e3f97657b3c46a693b10324a116e, type: 2}
+  allProbes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  reviewGrades:
+  - displayText: S
+    color: {r: 0.5019608, g: 0.8666667, b: 0.5451809, a: 1}
+    percentageThreshold: 100
+    timeThreshold: 45
+  - displayText: A
+    color: {r: 0.68749946, g: 0.8679245, b: 0.50356, a: 1}
+    percentageThreshold: 90
+    timeThreshold: 60
+  - displayText: B
+    color: {r: 0.83426523, g: 0.8666667, b: 0.5019608, a: 1}
+    percentageThreshold: 80
+    timeThreshold: 75
+  - displayText: C
+    color: {r: 0.9245283, g: 0.812161, b: 0.49279103, a: 1}
+    percentageThreshold: 70
+    timeThreshold: 90
+  - displayText: D
+    color: {r: 0.8666667, g: 0.6287232, b: 0.5019608, a: 1}
+    percentageThreshold: 60
+    timeThreshold: 105
+  - displayText: E
+    color: {r: 1, g: 0.69858354, b: 0.654902, a: 1}
+    percentageThreshold: 50
+    timeThreshold: 120
+  - displayText: F
+    color: {r: 1, g: 0.51925594, b: 0.4666667, a: 1}
+    percentageThreshold: 0
+    timeThreshold: 0
+  gameState: 0
+  playerScore: 0
+  pointsPerProbe: 10
+  correctDiagnoses: 0
+  wrongDiagnoses: 0
+  totalDiagnoses: 0
+  timeNeeded: 0
+  diagnosesPerRound: 20
+  pointDisplay: {fileID: 0}

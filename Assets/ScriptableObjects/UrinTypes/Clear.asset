@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b86f7e8dedff644390159c9247bb66a, type: 3}
   m_Name: Clear
   m_EditorClassIdentifier: 
-  diagnoseTypes: 010000000d000000
+  diagnoseTypes: 010000000d00000007000000
   urinColor: {r: 1, g: 0.9888779, b: 0.9009434, a: 1}

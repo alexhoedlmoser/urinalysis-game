@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af84ccbc31d2e046adb104544769d91, type: 3}
+  m_Name: Diabetes_01
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 0}
+  englishText: People with Diabetes often experience more thirst and thus drink a
+    lot more. So, their urine can be more clear than usual. Diabetes also increases
+    the risk for many other diseases so you should also cosult with your doctor if
+    you suspect diabetes might effect your health in more than the usual manners.
+  germanText: 
+  duration: 20

@@ -31,6 +31,7 @@ public class DialogInteraction : MonoBehaviour
     private GameManager _gameManager;
    
     private bool _interactionComplete;
+    
 
     //[HideInInspector] public bool lockPassiveDialog;
     
@@ -207,11 +208,11 @@ public class DialogInteraction : MonoBehaviour
 
     public void StartDialog(DialogSequence dialogSequence)
     {
-        GameManager.Instance.gameState = GameState.InDialog;
+        GameManager.Instance.SwitchGameState(GameState.InDialog);
         print(GameManager.CurrentInputHandler);
         GameManager.CurrentInputHandler.playerInput.onActionTriggered += OnInteractHandler;
         
-        _dialogUI.DisplayName(_characterName.ToUpper());
+        _dialogUI.DisplayName(_characterName);
         //_dialogUI.SetNameColor(_headlineColor);
         _dialogUI.FadeInDialog();
         
@@ -249,7 +250,7 @@ public class DialogInteraction : MonoBehaviour
         _dialogUI.FadeOutDialog();
         _interactionComplete = true;
         
-        GameManager.Instance.gameState = GameState.InProgress;
+        GameManager.Instance.SwitchGameState(GameState.InProgress);
         
         GameManager.CurrentInputHandler.playerInput.onActionTriggered -= OnInteractHandler;
 
