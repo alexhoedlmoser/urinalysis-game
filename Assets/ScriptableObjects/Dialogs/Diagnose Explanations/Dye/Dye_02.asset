@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dye_02
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  englishText: If you encounter this medical attention is probably not needed but
+  englishText: If you encounter this, medical attention is probably not needed but
     you should still watch what you eat and drink since you need to drink a pretty
     large number of foods with this dye to actually affect your urine color.
   germanText: 

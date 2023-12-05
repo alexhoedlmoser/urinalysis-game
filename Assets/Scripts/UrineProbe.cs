@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEditor;
 using UnityEngine.Serialization;
 
 public class UrineProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -25,19 +26,51 @@ public class UrineProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private bool _currentlyBlinking;
     private bool _currentlyRespawning;
     public List<DiagnoseType> typeHistory;
+    private bool _isActive;
 
     // Start is called before the first frame update
     void Start()
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
+       
         highlightImage.gameObject.SetActive(false);
         SetupProbe();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
+
+    private void OnEnable()
+    {
+        //GameManager.Instance.OnSwitchGameState -= OnStateSwitchHandler;
+        //GameManager.Instance.OnSwitchGameState += OnStateSwitchHandler;
+    }
+
+    /*private void OnStateSwitchHandler(GameState state)
+    {
+        if(!isActive) return;
+        
+        switch (state)
+        {
+            case GameState.InProgress:
+                _canvasGroup.interactable = true;
+                _canvasGroup.blocksRaycasts = true;
+                break;
+            case GameState.InDialog:
+                _canvasGroup.interactable = false;
+                _canvasGroup.blocksRaycasts = false;
+                break;
+            case GameState.InReview:
+                _canvasGroup.interactable = false;
+                _canvasGroup.blocksRaycasts = false;
+                break;
+            case GameState.InDisclaimer:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }*/
 
     public void SetupProbe()
     {
@@ -65,8 +98,10 @@ public class UrineProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void ToggleProbe(bool toggle)
     {
-        _canvasGroup.interactable = toggle;
         _canvasGroup.alpha = toggle ? 1f : 0f;
+        _isActive = toggle;
+        
+        _canvasGroup.interactable = toggle;
         _canvasGroup.blocksRaycasts = toggle;
     }
 

@@ -100,13 +100,13 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         currentMouseObject = Instantiate(draggingPrefab, Input.mousePosition, Quaternion.Euler(draggingRotation), draggingParent);
         currentMouseObject.GetComponent<DiagnoseCardDrag>().SetLabel(cardLabel.text);
         GameManager.Instance.currentMouseDiagnose = this;
+        GameManager.Instance.SetDragCursor();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (GameManager.Instance.currentMouseProbe)
         {
-
             UrineProbe urineProbe = GameManager.Instance.currentMouseProbe;
             UrineType urineType = urineProbe.urineType;
 
@@ -118,7 +118,6 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 if (urineType.diagnoseTypes.Contains(diagnoseType))
                 {
                     print("correct");
-                    GameManager.Instance.IncreaseScore();
                     diagnoseCardOnProbe.SetBackgroundColor(true);
 
                     if (explainDiagnose)
@@ -129,12 +128,13 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                         explainDiagnose = false;
                         
                     }
+                    GameManager.Instance.IncreaseScore();
                 }
                 else
                 {
                     print("uncorrect");
-                    GameManager.Instance.DecreaseScore();
                     diagnoseCardOnProbe.SetBackgroundColor(false);
+                    GameManager.Instance.DecreaseScore();
                 }
                 
                 urineProbe.StartProbeBlink();
@@ -146,6 +146,7 @@ public class DiagnoseCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         
         Destroy(currentMouseObject);
         GameManager.Instance.currentMouseDiagnose = null;
+        GameManager.Instance.SetNormalCursor();
     }
 
     private void CheckProbes()

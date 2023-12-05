@@ -14,7 +14,8 @@ public class DialogSequence : ScriptableObject
    public bool onlyOnce; 
    public bool isFinished = false;
    public bool invokeEvent = false;
-
+   public bool useQueue;
+   
    // public bool CheckDialogConditions()
    // {
    //    //return conditions.All(condition => condition.Check());

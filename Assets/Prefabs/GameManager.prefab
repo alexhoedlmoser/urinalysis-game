@@ -103,4 +103,6 @@ MonoBehaviour:
   totalDiagnoses: 0
   timeNeeded: 0
   diagnosesPerRound: 20
-  pointDisplay: {fileID: 0}
+  _normalCursor: {fileID: 2800000, guid: 5d1479dc99c8e4140b32d368ec55923a, type: 3}
+  _dragCursor: {fileID: 2800000, guid: 8e1d407b24e97af4c9a56101eb7461a3, type: 3}
+  _cursorHotspot: {x: 5, y: 5}

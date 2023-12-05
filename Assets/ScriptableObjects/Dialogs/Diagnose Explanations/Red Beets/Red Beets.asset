@@ -18,3 +18,4 @@ MonoBehaviour:
   onlyOnce: 0
   isFinished: 0
   invokeEvent: 0
+  useQueue: 0

@@ -42,12 +42,13 @@ public class ReviewUI : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.Instance.OnSwitchGameState -= OnStateSwitchHandler;
         GameManager.Instance.OnSwitchGameState += OnStateSwitchHandler;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnSwitchGameState -= OnStateSwitchHandler;
+       
     }
 
     private void OnStateSwitchHandler(GameState state)

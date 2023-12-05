@@ -94,8 +94,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6d79f3b0dcd91c44cb9b5995f0624c1e, type: 3}
   - {fileID: 21300000, guid: 35b6ce3f65d6c584dbd337fbebe25998, type: 3}
   _idleSprite: {fileID: 21300000, guid: 3246cc899b3f4a54594be154a9aba5e0, type: 3}
-  _falseHintSprite: {fileID: 0}
-  _trueHintSprite: {fileID: 0}
+  _falseHintSprite: {fileID: 21300000, guid: f2230110f05887244992b567d4cf805c, type: 3}
+  _trueHintSprite: {fileID: 21300000, guid: 6d79f3b0dcd91c44cb9b5995f0624c1e, type: 3}
+  _scoreFeed: {fileID: 0}
+  _scorePlusColor: {r: 0.68749946, g: 0.8679245, b: 0.50356, a: 1}
+  _scoreMinusColor: {r: 1, g: 0.6556604, b: 0.6556604, a: 1}
 --- !u!114 &8616811152382268362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,9 +113,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogUI: {fileID: 0}
   _promptLabelSkip: Skip
-  _characterName: Professor
+  _characterName: Professor Kurt
   _headlineColor: {r: 0.9568628, g: 0.89019614, b: 0.7803922, a: 1}
   dialogCategories:
+  - key: Tutorial
+    dialogSequences:
+    - {fileID: 11400000, guid: 9eb95dc86553a0241b6693c48788dc18, type: 2}
+    _activeDialogQueue: []
+    _passiveDialogQueue: []
   - key: Level1
     dialogSequences:
     - {fileID: 11400000, guid: f5c923b49bbd46148b0c1abe3ff69cba, type: 2}

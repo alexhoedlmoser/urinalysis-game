@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -14,7 +15,8 @@ public enum GameState
 {
     InProgress,
     InDialog,
-    InReview
+    InReview,
+    InDisclaimer
 }
 
 public class GameManager : MonoBehaviour
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     #endregion
@@ -60,8 +62,6 @@ public class GameManager : MonoBehaviour
     public int totalDiagnoses = 0;
     public float timeNeeded = 0f;
     public int diagnosesPerRound;
-    
-    [SerializeField] private TMP_Text pointDisplay;
 
     public static Professor CurrentProfessor => _currentProfessor ? _currentProfessor : _currentProfessor = FindObjectOfType<Professor>();
     private static Professor _currentProfessor;
@@ -69,15 +69,29 @@ public class GameManager : MonoBehaviour
     public static PlayerInputHandler CurrentInputHandler => _currentInputHandler ? _currentInputHandler : _currentInputHandler = FindObjectOfType<PlayerInputHandler>();
     private static PlayerInputHandler _currentInputHandler;
 
+    [SerializeField] private Texture2D _normalCursor;
+    [SerializeField] private Texture2D _dragCursor;
+    [SerializeField] private Vector2 _cursorHotspot;
+
+    public void SetNormalCursor()
+    {
+        Cursor.SetCursor(_normalCursor, _cursorHotspot, CursorMode.Auto);
+    }
+    
+    public void SetDragCursor()
+    {
+        Cursor.SetCursor(_dragCursor, _cursorHotspot, CursorMode.Auto);
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            foreach (UrineProbe urinProbe in allProbes)
-            {
-                urinProbe.SetupProbe();
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     foreach (UrineProbe urinProbe in allProbes)
+        //     {
+        //         urinProbe.SetupProbe();
+        //     }
+        // }
         
         CountGameTime();
     }
@@ -86,7 +100,16 @@ public class GameManager : MonoBehaviour
     {
         if (gameState != GameState.InProgress) return;
         timeNeeded += Time.deltaTime;
-        print(timeNeeded);
+    }
+
+    public void LoadGameScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public string GetLevelKey()
+    {
+        return SceneManager.GetActiveScene().name;
     }
     
     public UrineType GetRandomType()
@@ -102,7 +125,7 @@ public class GameManager : MonoBehaviour
             DiagnoseType.Overhydrated => "Overhydration",
             DiagnoseType.Infection => "Urinary Tract Infection",
             DiagnoseType.Hematuria => "Hematuria",
-            DiagnoseType.VitaminOverdose => "Vitamin B2",
+            DiagnoseType.VitaminOverdose => "Excess of B Vitamins",
             DiagnoseType.Healthy => "Healthy",
             DiagnoseType.RedBeetJuice => "Red Beets",
             DiagnoseType.LiverIssue => "Liver Issue",
@@ -146,24 +169,19 @@ public class GameManager : MonoBehaviour
         ApplyDiagnose();
     }
 
-    public void ApplyDiagnose()
+    private void ApplyDiagnose()
     {
-        UpdateScoreDisplay();
         totalDiagnoses++;
         if (totalDiagnoses >= diagnosesPerRound)
         {
-           EndGame();
+            StartCoroutine(QueueEndGame());
         }
     }
 
-    public void EndGame()
+    private IEnumerator QueueEndGame()
     {
+        yield return new WaitUntil( () => gameState == GameState.InProgress);
         SwitchGameState(GameState.InReview);
-    }
-
-    public void UpdateScoreDisplay()
-    {
-        pointDisplay.text = "Score: " + playerScore;
     }
 
     public ReviewGrade GetGrade()
@@ -186,7 +204,10 @@ public class GameManager : MonoBehaviour
     {
         timeNeeded = 0f;
         totalDiagnoses = wrongDiagnoses = correctDiagnoses = 0;
-        SwitchGameState(GameState.InProgress);
+        
+        CurrentProfessor.dialog.SwitchDialogCategoryByKey("Level1");
+        CurrentProfessor.dialog.StartDialogFromQueue();
+
         foreach (UrineProbe urinProbe in allProbes)
         {
             urinProbe.SetupProbe();

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6f2b8d4d96f4942a9031bb9eebe8fe, type: 3}
+  m_Name: Hematuria
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - {fileID: 11400000, guid: cc34309e01af2b342a9098ab6dabfbe1, type: 2}
+  - {fileID: 11400000, guid: ff61c5244d69e7b4da832d0a1d41f78b, type: 2}
+  - {fileID: 11400000, guid: d0387a5d07ddb404c9ed185ece37b572, type: 2}
+  onlyOnce: 0
+  isFinished: 0
+  invokeEvent: 0
+  useQueue: 0

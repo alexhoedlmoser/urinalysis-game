@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Viamin B_02
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  englishText: You can get too much Vitamin B2 by eating too much of certain foods
-    or due to some medications. Make sure to always chec the label on your food and
-    adjust your intake accordingly. Should you take medications always consult your
-    doctor.
+  englishText: You can get too much vitamin B2 by taking high amounts of vitamin
+    supplements or due to some medications. Make sure to regularly check vitamin
+    shortages and adjust your intake accordingly. Should you take medications always
+    consult your doctor.
   germanText: 
   duration: 20

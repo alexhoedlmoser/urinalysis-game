@@ -15,7 +15,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   englishText: People with Diabetes often experience more thirst and thus drink a
     lot more. So, their urine can be more clear than usual. Diabetes also increases
-    the risk for many other diseases so you should also cosult with your doctor if
-    you suspect diabetes might effect your health in more than the usual manners.
+    the risk for many other diseases so you should also consult with your doctor
+    if you suspect diabetes might effect your health in more than the usual manners.
   germanText: 
   duration: 20

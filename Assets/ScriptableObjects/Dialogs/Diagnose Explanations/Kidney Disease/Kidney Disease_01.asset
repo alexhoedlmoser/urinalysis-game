@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
   englishText: This looks like a kidney disease. The Kidney plays an essential role
-    in your metabolism and should be treated when issues arise. Pinkish, red or cloudy
-    urine might indicate some kidney issues. Blood in your urine is also a giveaway.
+    in your metabolism and should be treated when issues arise. Pinkish, red, very
+    dark or cloudy urine might indicate some kidney issues.
   germanText: 
   duration: 20

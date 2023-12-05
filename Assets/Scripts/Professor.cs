@@ -31,6 +31,8 @@ public class Professor : MonoBehaviour
     private float _scoreFeedStandardPosX;
 
     private Sequence _currentScoreSequence;
+
+    private Sequence _currentReactSequence;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,34 +42,57 @@ public class Professor : MonoBehaviour
 
         _scoreFeedTransform = _scoreFeed.gameObject.GetComponent<RectTransform>();
         _scoreFeedStandardPosX = _scoreFeedTransform.localPosition.x;
-        
-        dialog.StartDialogFromQueue();
-        
+
+        StartCoroutine(StartDialogDelayed());
         
         StartIdleLoop();
     }
 
+    private string GetDialogKey()
+    {
+        if (GameManager.Instance.GetLevelKey() == "Level1")
+        {
+            return "Tutorial";
+        }
+        
+        return GameManager.Instance.GetLevelKey();
+        
+    }
+
+    private IEnumerator StartDialogDelayed()
+    {
+        yield return new WaitForEndOfFrame();
+        dialog.SwitchDialogCategoryByKey(GetDialogKey());
+        dialog.StartDialogFromQueue();
+        
+    }
+
     private void OnEnable()
     {
+        GameManager.Instance.OnSwitchGameState -= OnStateSwitchHandler;
+        GameManager.Instance.OnScoreChange -= OnScoreChangeHandler;
         GameManager.Instance.OnSwitchGameState += OnStateSwitchHandler;
         GameManager.Instance.OnScoreChange += OnScoreChangeHandler;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnSwitchGameState -= OnStateSwitchHandler;
-        GameManager.Instance.OnScoreChange -= OnScoreChangeHandler;
+       
     }
 
     private void OnScoreChangeHandler(bool plus)
     {
+        _currentReactSequence?.Kill();
+        
         if (plus)
         {
+            _currentReactSequence = React(_trueHintSprite);
             _scoreFeed.color = _scorePlusColor;
             _scoreFeed.text = "+";
         }
         else
         {
+            _currentReactSequence = React(_falseHintSprite);
             _scoreFeed.color = _scoreMinusColor;
             _scoreFeed.text = "-";
         }
@@ -78,6 +103,8 @@ public class Professor : MonoBehaviour
 
     private void OnStateSwitchHandler(GameState state)
     {
+        _currentReactSequence?.Kill();
+        
         switch (state)
         {
             case GameState.InProgress:
@@ -94,17 +121,41 @@ public class Professor : MonoBehaviour
         }
     }
 
-    private Sequence IdleLoopSequence()
+    private Sprite GetCurrentStateSprite()
+    {
+        GameState state = GameManager.Instance.gameState;
+        switch (state)
+        {
+            case GameState.InProgress:
+                return _idleSprite;
+            
+            case GameState.InDialog:
+                return _inDialogSprites[Random.Range(0, _inDialogSprites.Length)];
+            case GameState.InReview:
+                return _idleSprite;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }
+
+    private Sequence LoopSequence()
     {
         return DOTween.Sequence()
             .Append(_rectTransform.DOLocalMoveY(0f, 0f))
             .AppendInterval(1f)
-            .Append(_rectTransform.DOLocalMoveY(-5f, 0f));
+            .Append(_rectTransform.DOLocalMoveY(-5f, 0f))
+            .AppendCallback((delegate
+            {
+                if (GameManager.Instance.gameState == GameState.InDialog)
+                {
+                    _image.sprite = _inDialogSprites[Random.Range(0, _inDialogSprites.Length)];
+                }
+            }));
     }
 
     private void StartIdleLoop()
     {
-        IdleLoopSequence().SetLoops(-1, LoopType.Yoyo).Play();
+        LoopSequence().SetLoops(-1, LoopType.Yoyo).Play();
     }
 
     private Sequence ScoreVisualSequence()
@@ -117,6 +168,15 @@ public class Professor : MonoBehaviour
             .Join(_scoreFeedTransform.DOLocalMoveX(_scoreFeedStandardPosX + 50f, 2f))
             .Append(_scoreFeedTransform.DOScale(0f, 0.25f).SetEase(Ease.InBack));
     }
+
+    private Sequence React(Sprite reactSprite)
+    {
+        return DOTween.Sequence()
+            .AppendCallback((delegate { _image.sprite = reactSprite; }))
+            .AppendInterval(1f)
+            .AppendCallback((delegate { _image.sprite = GetCurrentStateSprite(); }));
+    }
+    
     
     
 }

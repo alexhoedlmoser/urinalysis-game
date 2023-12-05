@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: DarkYellow
   m_EditorClassIdentifier: 
   diagnoseTypes: 00000000
-  diagnoseExplanations:
-  - {fileID: 11400000, guid: 2d5fa61156f8c8043b1e6d0df3018d4a, type: 2}
   urinColor: {r: 0.8773585, g: 0.68286985, b: 0.29383236, a: 1}

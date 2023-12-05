@@ -29,10 +29,7 @@ public class DialogInteraction : MonoBehaviour
     private AudioSource _audioSource;
     private DialogSequence _currentDialog;
     private GameManager _gameManager;
-   
-    private bool _interactionComplete;
     
-
     //[HideInInspector] public bool lockPassiveDialog;
     
     private void Start()
@@ -69,10 +66,11 @@ public class DialogInteraction : MonoBehaviour
     {
         for (var index = 0; index < dialogCategories.Length; index++)
         {
-            var dialogCategory = dialogCategories[index];
+            DialogCategory dialogCategory = dialogCategories[index];
             if (dialogCategory.key == key)
             {
                 activeDialogCategoryIndex = index;
+                return;
             }
         }
 
@@ -86,19 +84,23 @@ public class DialogInteraction : MonoBehaviour
     }
     private void InitDialogQueues()
     {
-        // Populate the dialog queues
-        foreach (DialogSequence dialogSequence in dialogCategories[activeDialogCategoryIndex].dialogSequences)
+        foreach (DialogCategory dialogCategory in dialogCategories)
         {
-            if (!dialogSequence.isFinished)
+            // Populate the dialog queues
+            foreach (DialogSequence dialogSequence in dialogCategory.dialogSequences)
             {
-                dialogCategories[activeDialogCategoryIndex]._activeDialogQueue.Add(dialogSequence);
-            }
+                if (!dialogSequence.isFinished)
+                {
+                    dialogCategory._activeDialogQueue.Add(dialogSequence);
+                }
             
-            else if (!dialogSequence.onlyOnce)
-            {
-                dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Add(dialogSequence);
+                else if (!dialogSequence.onlyOnce)
+                {
+                    dialogCategory._passiveDialogQueue.Add(dialogSequence);
+                }
             }
         }
+        
     }
     
     public void OnInteract()
@@ -120,7 +122,6 @@ public class DialogInteraction : MonoBehaviour
 
         if (dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Count > 0)
         {
-            
             // restart from the beginning if all passive dialogs have been spoken
             if (_currentPassiveDialogIndex >= dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Count)
             {
@@ -208,9 +209,11 @@ public class DialogInteraction : MonoBehaviour
 
     public void StartDialog(DialogSequence dialogSequence)
     {
+        if (dialogSequence == null) return;
+
         GameManager.Instance.SwitchGameState(GameState.InDialog);
-        print(GameManager.CurrentInputHandler);
-        GameManager.CurrentInputHandler.playerInput.onActionTriggered += OnInteractHandler;
+        
+        GameManager.CurrentInputHandler.OnSkip += OnSkipHandler;
         
         _dialogUI.DisplayName(_characterName);
         //_dialogUI.SetNameColor(_headlineColor);
@@ -240,36 +243,33 @@ public class DialogInteraction : MonoBehaviour
         }
         
         //_audioSource.Stop();
-        dialogCategories[activeDialogCategoryIndex]._activeDialogQueue.Remove(dialog);
-        
-        if (!dialog.onlyOnce && !dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Contains(dialog))
+        if (dialog.useQueue)
         {
-            dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Add(dialog);
+            dialogCategories[activeDialogCategoryIndex]._activeDialogQueue.Remove(dialog);
+        
+            if (!dialog.onlyOnce && !dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Contains(dialog))
+            {
+                dialogCategories[activeDialogCategoryIndex]._passiveDialogQueue.Add(dialog);
+            }
         }
 
         _dialogUI.FadeOutDialog();
-        _interactionComplete = true;
-        
+
+        GameManager.CurrentInputHandler.OnSkip -= OnSkipHandler;
         GameManager.Instance.SwitchGameState(GameState.InProgress);
-        
-        GameManager.CurrentInputHandler.playerInput.onActionTriggered -= OnInteractHandler;
 
     }
     
-    private void OnInteractHandler(InputAction.CallbackContext callbackContext)
+    private void OnSkipHandler()
     {
-        if (!callbackContext.performed) return;
-      
-        if (callbackContext.action == GameManager.CurrentInputHandler.skipAction)
+        if (_currentDialogCoroutine != null)
         {
-            if (_currentDialogCoroutine != null)
-            {
-                //_audioSource.Pause();
-                StopCoroutine(_currentDialogCoroutine);
-            }
-        
-            _currentDialogCoroutine = StartCoroutine(RunSequence(_currentLineIndex+1, _currentDialog));
+            //_audioSource.Pause();
+            StopCoroutine(_currentDialogCoroutine);
         }
+        
+        _currentDialogCoroutine = StartCoroutine(RunSequence(_currentLineIndex+1, _currentDialog));
+        
     }
 
     public void TestEvent()
