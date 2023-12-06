@@ -70,27 +70,27 @@ MonoBehaviour:
   - displayText: S
     color: {r: 0.5019608, g: 0.8666667, b: 0.5451809, a: 1}
     percentageThreshold: 100
-    timeThreshold: 45
+    timeThreshold: 60
   - displayText: A
     color: {r: 0.68749946, g: 0.8679245, b: 0.50356, a: 1}
     percentageThreshold: 90
-    timeThreshold: 60
+    timeThreshold: 90
   - displayText: B
     color: {r: 0.83426523, g: 0.8666667, b: 0.5019608, a: 1}
     percentageThreshold: 80
-    timeThreshold: 75
+    timeThreshold: 120
   - displayText: C
     color: {r: 0.9245283, g: 0.812161, b: 0.49279103, a: 1}
     percentageThreshold: 70
-    timeThreshold: 90
+    timeThreshold: 150
   - displayText: D
     color: {r: 0.8666667, g: 0.6287232, b: 0.5019608, a: 1}
     percentageThreshold: 60
-    timeThreshold: 105
+    timeThreshold: 180
   - displayText: E
     color: {r: 1, g: 0.69858354, b: 0.654902, a: 1}
     percentageThreshold: 50
-    timeThreshold: 120
+    timeThreshold: 360
   - displayText: F
     color: {r: 1, g: 0.51925594, b: 0.4666667, a: 1}
     percentageThreshold: 0

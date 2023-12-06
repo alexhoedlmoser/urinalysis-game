@@ -12,13 +12,13 @@ using Sequence = DG.Tweening.Sequence;
 
 public class Professor : MonoBehaviour
 {
-
     public DialogInteraction dialog;
 
     [SerializeField] private Sprite[] _inDialogSprites;
     [SerializeField] private Sprite _idleSprite;
     [SerializeField] private Sprite _falseHintSprite;
     [SerializeField] private Sprite _trueHintSprite;
+    [SerializeField] private Sprite _reviewSprite;
     [SerializeField] private TMP_Text _scoreFeed;
     [SerializeField] private Color _scorePlusColor;
     [SerializeField] private Color _scoreMinusColor;
@@ -71,8 +71,9 @@ public class Professor : MonoBehaviour
     {
         GameManager.Instance.OnSwitchGameState -= OnStateSwitchHandler;
         GameManager.Instance.OnScoreChange -= OnScoreChangeHandler;
-        GameManager.Instance.OnSwitchGameState += OnStateSwitchHandler;
         GameManager.Instance.OnScoreChange += OnScoreChangeHandler;
+        GameManager.Instance.OnSwitchGameState += OnStateSwitchHandler;
+       
     }
 
     private void OnDisable()
@@ -114,7 +115,7 @@ public class Professor : MonoBehaviour
                 _image.sprite = _inDialogSprites[Random.Range(0, _inDialogSprites.Length)];
                 break;
             case GameState.InReview:
-                _image.sprite = _idleSprite;
+                _image.sprite = _reviewSprite;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -132,7 +133,7 @@ public class Professor : MonoBehaviour
             case GameState.InDialog:
                 return _inDialogSprites[Random.Range(0, _inDialogSprites.Length)];
             case GameState.InReview:
-                return _idleSprite;
+                return _reviewSprite;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }

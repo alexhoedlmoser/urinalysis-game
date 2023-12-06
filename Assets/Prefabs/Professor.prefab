@@ -96,6 +96,7 @@ MonoBehaviour:
   _idleSprite: {fileID: 21300000, guid: 3246cc899b3f4a54594be154a9aba5e0, type: 3}
   _falseHintSprite: {fileID: 21300000, guid: f2230110f05887244992b567d4cf805c, type: 3}
   _trueHintSprite: {fileID: 21300000, guid: 6d79f3b0dcd91c44cb9b5995f0624c1e, type: 3}
+  _reviewSprite: {fileID: 21300000, guid: 978ef198eed96064a974c7e8ddf2d6af, type: 3}
   _scoreFeed: {fileID: 0}
   _scorePlusColor: {r: 0.68749946, g: 0.8679245, b: 0.50356, a: 1}
   _scoreMinusColor: {r: 1, g: 0.6556604, b: 0.6556604, a: 1}

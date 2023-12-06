@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
   englishText: You can get too much vitamin B2 by taking high amounts of vitamin
-    supplements or due to some medications. Make sure to regularly check vitamin
-    shortages and adjust your intake accordingly. Should you take medications always
-    consult your doctor.
+    supplements or drinking large amounts of energy drinks, which often contain Riboflavin,
+    another term for vitamin B2. Make sure to regularly check vitamin shortages and
+    adjust your intake accordingly. Should you take medications always consult your
+    doctor.
   germanText: 
   duration: 20

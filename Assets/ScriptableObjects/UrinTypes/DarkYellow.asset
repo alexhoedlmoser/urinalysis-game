@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diagnoseTypes: 00000000
   urinColor: {r: 0.8773585, g: 0.68286985, b: 0.29383236, a: 1}
+  urinAlpha: 0
+  urinFillImage: {fileID: 21300000, guid: ee2de4984d0bf7d48b719efe697948ab, type: 3}

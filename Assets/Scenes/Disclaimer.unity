@@ -566,14 +566,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-    no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-    amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-    sanctus est Lorem ipsum dolor sit amet.
+  m_text: 'The statements presented in this piece of interactive media are only an
+    approximation based on self-researched information. None of these statements
+    should be taken for fact and thourough research is advised to be carried out
+    in addition to the aforementioned statements.
+
+
+    Should you have any real
+    concern regarding your health, you should seek out medical attention and/or consult
+    with a medical professional.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a83546c0db2e5c74db8f8e2abac32bba, type: 2}
   m_sharedMaterial: {fileID: 5992516103751389502, guid: a83546c0db2e5c74db8f8e2abac32bba, type: 2}
@@ -931,6 +932,30 @@ PrefabInstance:
     - target: {fileID: 1664785472541674556, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188618484765586438, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
+      propertyPath: reviewGrades.Array.data[0].timeThreshold
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188618484765586438, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
+      propertyPath: reviewGrades.Array.data[1].timeThreshold
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188618484765586438, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
+      propertyPath: reviewGrades.Array.data[2].timeThreshold
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188618484765586438, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
+      propertyPath: reviewGrades.Array.data[3].timeThreshold
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188618484765586438, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
+      propertyPath: reviewGrades.Array.data[4].timeThreshold
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188618484765586438, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
+      propertyPath: reviewGrades.Array.data[5].timeThreshold
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8762434331748937204, guid: 70fa9a66eea3fbd459aeb79dcc026695, type: 3}
       propertyPath: m_LocalPosition.x

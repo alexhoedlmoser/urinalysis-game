@@ -85,13 +85,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.R))
-        // {
-        //     foreach (UrineProbe urinProbe in allProbes)
-        //     {
-        //         urinProbe.SetupProbe();
-        //     }
-        // }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            foreach (UrineProbe urinProbe in allProbes)
+            {
+                urinProbe.SetupProbe();
+            }
+        }
         
         CountGameTime();
     }

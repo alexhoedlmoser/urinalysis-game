@@ -92,6 +92,7 @@ public class UrineProbe : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void AssignUrineType()
     {
         urineType = GameManager.Instance.GetRandomType();
+        fillImage.sprite = urineType.urinFillImage;
         fillImage.color = urineType.urinColor;
         ResetTypeHistory();
     }
