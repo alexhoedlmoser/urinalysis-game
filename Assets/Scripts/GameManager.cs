@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     public UrineProbe[] allProbes;
     public ReviewGrade[] reviewGrades;
     public GameState gameState;
+    public TMP_Text _timerText;
+    public TMP_Text totalDiagnosesText;
 
     public int playerScore;
     public int pointsPerProbe;
@@ -96,10 +98,31 @@ public class GameManager : MonoBehaviour
         CountGameTime();
     }
 
+    private void Start()
+    {
+        if (GetLevelKey() == "Level1")
+        {
+            DisplayTotalDiagnoses();
+        }
+        
+    }
+
     private void CountGameTime()
     {
         if (gameState != GameState.InProgress) return;
         timeNeeded += Time.deltaTime;
+        
+        DisplayGameTime();
+    }
+
+    private void DisplayGameTime()
+    {
+        _timerText.text = (int)timeNeeded + " sec";
+    }
+    
+    private void DisplayTotalDiagnoses()
+    {
+        totalDiagnosesText.text = totalDiagnoses + "/" + diagnosesPerRound;
     }
 
     public void LoadGameScene(int sceneIndex)
@@ -176,6 +199,8 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(QueueEndGame());
         }
+        
+        DisplayTotalDiagnoses();
     }
 
     private IEnumerator QueueEndGame()
@@ -204,6 +229,7 @@ public class GameManager : MonoBehaviour
     {
         timeNeeded = 0f;
         totalDiagnoses = wrongDiagnoses = correctDiagnoses = 0;
+        DisplayTotalDiagnoses();
         
         CurrentProfessor.dialog.SwitchDialogCategoryByKey("Level1");
         CurrentProfessor.dialog.StartDialogFromQueue();

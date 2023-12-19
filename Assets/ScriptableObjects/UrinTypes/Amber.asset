@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Amber
   m_EditorClassIdentifier: 
   diagnoseTypes: 05000000
-  urinColor: {r: 1, g: 0.92221665, b: 0.4943396, a: 1}
+  urinColor: {r: 1, g: 0.9510019, b: 0.6839622, a: 1}
   urinAlpha: 0
   urinFillImage: {fileID: 21300000, guid: 20bfd48d01c97d0469ced5584b091706, type: 3}

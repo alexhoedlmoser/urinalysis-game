@@ -67,34 +67,50 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   reviewGrades:
-  - displayText: S
-    color: {r: 0.5019608, g: 0.8666667, b: 0.5451809, a: 1}
+  - displayText: A+
+    color: {r: 0.5019608, g: 0.8666667, b: 0.6074773, a: 1}
     percentageThreshold: 100
     timeThreshold: 60
   - displayText: A
-    color: {r: 0.68749946, g: 0.8679245, b: 0.50356, a: 1}
+    color: {r: 0.64858836, g: 0.8666667, b: 0.5019608, a: 1}
     percentageThreshold: 90
-    timeThreshold: 90
+    timeThreshold: 100000
+  - displayText: B+
+    color: {r: 0.8352941, g: 0.8666667, b: 0.5019608, a: 1}
+    percentageThreshold: 80
+    timeThreshold: 70
   - displayText: B
     color: {r: 0.83426523, g: 0.8666667, b: 0.5019608, a: 1}
     percentageThreshold: 80
-    timeThreshold: 120
+    timeThreshold: 100000
+  - displayText: C+
+    color: {r: 0.9254902, g: 0.8117647, b: 0.49411765, a: 1}
+    percentageThreshold: 70
+    timeThreshold: 80
   - displayText: C
     color: {r: 0.9245283, g: 0.812161, b: 0.49279103, a: 1}
     percentageThreshold: 70
-    timeThreshold: 150
+    timeThreshold: 100000
+  - displayText: D+
+    color: {r: 0.8666667, g: 0.627451, b: 0.5019608, a: 1}
+    percentageThreshold: 60
+    timeThreshold: 90
   - displayText: D
     color: {r: 0.8666667, g: 0.6287232, b: 0.5019608, a: 1}
     percentageThreshold: 60
-    timeThreshold: 180
+    timeThreshold: 100000
+  - displayText: E+
+    color: {r: 1, g: 0.69803923, b: 0.654902, a: 1}
+    percentageThreshold: 50
+    timeThreshold: 100
   - displayText: E
     color: {r: 1, g: 0.69858354, b: 0.654902, a: 1}
     percentageThreshold: 50
-    timeThreshold: 360
+    timeThreshold: 100000
   - displayText: F
     color: {r: 1, g: 0.51925594, b: 0.4666667, a: 1}
     percentageThreshold: 0
-    timeThreshold: 0
+    timeThreshold: 100000
   gameState: 0
   playerScore: 0
   pointsPerProbe: 10
